@@ -1,9 +1,10 @@
 
-let i=0;
-//let s = parseInt(prompt("Introduce numero :"));
+
+//let s =+prompt("Introduce numero :");
 let s=5;
+let i=0
 console.log(`++++++++++++Tabla de sumar de ${s}++++++++++++++++`);
-do{console.log(`${i}+${s}=${i+++s}`);
+do{console.log(`${s}+${i}=${i+++s}`);
 }while(i<=10)
 
 console.log(`**********Tabla de multiplicar del 10*************`);
