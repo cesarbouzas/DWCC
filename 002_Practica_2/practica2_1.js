@@ -1,6 +1,6 @@
 
 
-//let s =+prompt("Introduce numero :");
+//let s =+prompt("Introduce numero :");//No me funciona en VScode por linea comandos.
 let s=5;
 let i=0
 console.log(`++++++++++++Tabla de sumar de ${s}++++++++++++++++`);
