@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "xabikos.javascriptsnippets",
+        "abusaidm.html-snippets",
+        "ms-vscode.js-debug-nightly",
+        "akamud.vscode-javascript-snippet-pack",
+        "formulahendry.code-runner"
+    ]
+}
