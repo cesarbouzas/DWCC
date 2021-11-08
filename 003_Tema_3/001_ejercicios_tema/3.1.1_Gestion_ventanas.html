@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Gestión de Ventanas</title>
+</head>
+
+
+
+<body>
+
+
+    <p id="p1"></p>
+
+    <script>
+        /*
+        -Reperesenta la ventana abierta de un navegador
+        -Si la ventanan tiene etiquetas tipo Iframa el navegador crea 
+        un objeto ventana para el html actual y otra por cada iframe 
+        -Todos los objetos,funciones,variables... son miembros del 
+        objeto window.Las funciones son sus métodos , 
+        las variables globales y elDOM son sus propiedades.
+        -No todos los metodos funcionan para todos los navegadores: se
+        debe comprobar la compatibilidad
+        */
+
+        //Propiedades Básicas de window.
+
+        //nombre de la ventana.
+        window.name = "miVentana";
+        let texto = "";
+        texto += "<br/> El nombre de la ventana es :" + window.name;
+        //Tamaño de la ventana  con Toolbar y scroolBar.
+        texto += "<br/>El ancho externo es de :" + window.outerWidth;
+        texto += "<br/>El alto externo es de :" + window.outerHeight;
+        //Tamaño de la ventana sin Toolbar ni ScrrolBar.
+        texto += "<br/>El ancho interior es de :" + window.innerWidth;
+        texto += "<br/>el alto interior es de :" + window.innerHeight;
+        //Donde se encuntra la barra de scroll su posicion.
+        texto += "<br/>La barra horizonatal esta en " + window.scrollX;
+        texto += "<br/>La barra vertical está en " + window.scrollY;
+        texto += "<br/>La barra horizontal está en " + window.pageXOffset;
+        texto += "<br/>a barra vertical esta en " + window.pageYoffset;
+        //Distacia de la esquina izquierda superior de la ventana al borde de la ventana
+        texto += "<br/>Distancia a la esquina en X" + window.screenX;
+        texto += "<br/>Distancia a la esquina en Y" + window.screenY;
+        document.getElementById("p1").innerHTML = texto;
+    </script>
+
+</body>
+
+</html>
