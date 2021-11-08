@@ -17,15 +17,15 @@
 
     <script>
         /*
-                -Reperesenta la ventana abierta de un navegador
-                -Si la ventanan tiene etiquetas tipo Iframa el navegador crea 
-                un objeto ventana para el html actual y otra por cada iframe 
-                -Todos los objetos,funciones,variables... son miembros del 
-                objeto window.Las funciones son sus métodos , 
-                las variables globales y elDOM son sus propiedades.
-                -No todos los metodos funcionan para todos los navegadores: se
-                debe comprobar la compatibilidad
-                */
+                                                                                                                                                                                                                                                                                                                                                -Reperesenta la ventana abierta de un navegador
+                                                                                                                                                                                                                                                                                                                                                -Si la ventanan tiene etiquetas tipo Iframa el navegador crea 
+                                                                                                                                                                                                                                                                                                                                                un objeto ventana para el html actual y otra por cada iframe 
+                                                                                                                                                                                                                                                                                                                                                -Todos los objetos,funciones,variables... son miembros del 
+                                                                                                                                                                                                                                                                                                                                                objeto window.Las funciones son sus métodos , 
+                                                                                                                                                                                                                                                                                                                                                las variables globales y elDOM son sus propiedades.
+                                                                                                                                                                                                                                                                                                                                                -No todos los metodos funcionan para todos los navegadores: se
+                                                                                                                                                                                                                                                                                                                                                debe comprobar la compatibilidad
+                                                                                                                                                                                                                                                                                                                                                */
 
         //Propiedades Básicas de window.
 
@@ -48,7 +48,66 @@
         texto += "<br/>Distancia a la esquina en X" + window.screenX;
         texto += "<br/>Distancia a la esquina en Y" + window.screenY;
         document.getElementById("p1").innerHTML = texto;
+
+        /*************************************************************************/
+        var miVentana;
+        var respuesta;
+        var nombre;
+
+        function crearVentana() {
+            miVentana = window.open("", "", "width=300,height=200");
+            miVentana.document.write("<h1>Ventanta Nueva</h1>");
+            miVentana.document.write("<h2>Mi Ventana</h2>");
+
+        }
+
+        function cerrarVentana() {
+
+            miVentana.close();
+        }
+
+        function aumentarVentana() {
+            miVentana.resizeBy(20, 20);
+
+        }
+
+        function cambiarTamañoVentana() {
+            miVentana.resizeTo(width = 600, height = 200)
+        }
+
+        function ponerFoco() {
+
+            miVentana.focus();
+        }
+
+        function moverVentana() {
+
+            miVentana.moveTo(500, 500);
+            miVentana.focus();
+        }
+
+        function imprimirVentana() {
+
+            //window.print();
+            miVentana.print();
+        }
+
+        function preguntar() {
+            nombre = window.prompt("¿Como te llamas?", "introduce tu nombre");
+            window.alert("hola " + nombre);
+            respuesta = confirm("Te gusta esta Ventana " + nombre + "?");
+            window.alert((respuesta) ? "Me alegro " + nombre : "Que pena " + nombre);
+        }
     </script>
+    <button onclick="crearVentana()">Crear Ventana</button>
+    <button onclick="aumentarVentana()">Aumentar Ventana</button>
+    <button onclick="cambiarTamañoVentana()">Cambiar tamaño</button>
+    <button onclick="ponerFoco()">Poner foco</buttton>
+    <button onclick="moverVentana()">Mover</button>
+    <button onclick="preguntar()">preguntar</button>
+    <button onclick="imprimirVentana()">imprimir</button>
+    <button onclick="cerrarVentana()">Cerrar Ventana</button>
+
 
 </body>
 
