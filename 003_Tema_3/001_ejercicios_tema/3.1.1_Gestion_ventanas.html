@@ -14,18 +14,19 @@
 
 
     <p id="p1"></p>
-
+    <p id="reloj"></p>
+    <p id="cronometro"></p>
     <script>
         /*
-                                                                                                                                                                                                                                                                                                                                                -Reperesenta la ventana abierta de un navegador
-                                                                                                                                                                                                                                                                                                                                                -Si la ventanan tiene etiquetas tipo Iframa el navegador crea 
-                                                                                                                                                                                                                                                                                                                                                un objeto ventana para el html actual y otra por cada iframe 
-                                                                                                                                                                                                                                                                                                                                                -Todos los objetos,funciones,variables... son miembros del 
-                                                                                                                                                                                                                                                                                                                                                objeto window.Las funciones son sus métodos , 
-                                                                                                                                                                                                                                                                                                                                                las variables globales y elDOM son sus propiedades.
-                                                                                                                                                                                                                                                                                                                                                -No todos los metodos funcionan para todos los navegadores: se
-                                                                                                                                                                                                                                                                                                                                                debe comprobar la compatibilidad
-                                                                                                                                                                                                                                                                                                                                                */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -Reperesenta la ventana abierta de un navegador
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -Si la ventanan tiene etiquetas tipo Iframa el navegador crea 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        un objeto ventana para el html actual y otra por cada iframe 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -Todos los objetos,funciones,variables... son miembros del 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        objeto window.Las funciones son sus métodos , 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        las variables globales y elDOM son sus propiedades.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        -No todos los metodos funcionan para todos los navegadores: se
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        debe comprobar la compatibilidad
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
 
         //Propiedades Básicas de window.
 
@@ -49,10 +50,13 @@
         texto += "<br/>Distancia a la esquina en Y" + window.screenY;
         document.getElementById("p1").innerHTML = texto;
 
+
         /*************************************************************************/
         var miVentana;
         var respuesta;
         var nombre;
+        var reloj;
+        var cont;
 
         function crearVentana() {
             miVentana = window.open("", "", "width=300,height=200");
@@ -98,16 +102,39 @@
             respuesta = confirm("Te gusta esta Ventana " + nombre + "?");
             window.alert((respuesta) ? "Me alegro " + nombre : "Que pena " + nombre);
         }
+
+        function abrirReloj() {
+            cont = 0;
+            reloj = window.setTimeout(mostrarReloj, 1000)
+            cronometro = window.setInterval(mostrarCronometro, 1000);
+        }
+
+        function mostrarReloj() {
+            var fecha = new Date();
+            window.document.getElementById("reloj").innerHTML = fecha.getHours() + ":" + ((fecha.getMinutes() < 10) ? "0" + fecha.getMinutes() : fecha.getMinutes()) + ":" + fecha.getSeconds();
+        }
+
+        function mostrarCronometro() {
+            cont++;
+            window.document.getElementById("cronometro").innerHTML = cont;
+
+        }
+
+        function pararReloj() {
+            window.clearTimeout(reloj);
+            window.clearTimeout(cronometro);
+        }
     </script>
     <button onclick="crearVentana()">Crear Ventana</button>
     <button onclick="aumentarVentana()">Aumentar Ventana</button>
     <button onclick="cambiarTamañoVentana()">Cambiar tamaño</button>
     <button onclick="ponerFoco()">Poner foco</buttton>
     <button onclick="moverVentana()">Mover</button>
-    <button onclick="preguntar()">preguntar</button>
-    <button onclick="imprimirVentana()">imprimir</button>
+    <button onclick="preguntar()">Preguntar</button>
+    <button onclick="imprimirVentana()">Imprimir</button>
     <button onclick="cerrarVentana()">Cerrar Ventana</button>
-
+    <button onclick="abrirReloj()">Reloj</button>
+    <button onclick="pararReloj()">Parar Reloj</button>
 
 </body>
 
