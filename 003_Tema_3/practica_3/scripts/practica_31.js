@@ -1,17 +1,20 @@
-var ventana;
+var ventana = new window();
 
-function unidad3() {
-    do { abrirVentana(); }
+function parte1() {
+    do {
+        abrirVentana();
+
+    }
     while (!existeVentana());
-    ventana.setTimeout(datosVentana, 1000);
+
 
 }
 
 function existeVentana() {
-    if ((ventana == null) || (ventana.closed)) {
-        return false;
-    } else {
+    if ((ventana != null) && (ventana.closed == false)) {
         return true;
+    } else {
+        return false;
     }
 
 }
@@ -19,12 +22,12 @@ function existeVentana() {
 function abrirVentana() {
     if (!existeVentana()) {
         ventana = window.open("", "ventana", "width=800,height=500");
+        ventana.setTimeout(datosVentana, 5000);
+        ventana.focus();
 
     } else {
-        ventana.close();
-
+        ventana.focus();
     }
-    ventana.focus();
 }
 
 function datosVentana() {
@@ -49,59 +52,74 @@ function datosVentana() {
 
 function parte2() {
 
-    if (existeVentana) {
-
+    if (existeVentana()) {
         let op = confirm("¿Cerrar la parte 1 para continuar?");
-        if (op = true) {
+        if (op == true) {
             ventana.close();
             window.parent.focus();
-            window.document.write("<h1> Tarea DWE03</h1>");
-            let nombreApellidos = prompt("Introduce tu nombre y apellidos");
-            let arrayNombreApellidos = nombreApellidos.split(" ", 3);
-            let diaNac = +prompt("Introduce Dia de nacimiento");
-            let mesNac = +prompt("Introduce Mes de nacimiento") - 1;
-            let anoNac = +prompt("Introduce Año de nacimiento");
-            fNac = new Date(anoNac, mesNac, diaNac);
-            window.document.write("</br>Buenos dias " + arrayNombreApellidos[0].toString());
-            window.document.write("</br>Tu nombre y apellidos tiene :" + nombreApellidos.length + " includios espacios");
-            document.write("</br>Tu nombre:" + arrayNombreApellidos[0].length + " sin espacios");
-            document.write("</br>La letra a aparece en la posición : " + (arrayNombreApellidos[0].search("a") + 1) + " de tu nombre.");
-            document.write("</br>La letra a aparece por última vez en la posción : " + (nombreApellidos.lastIndexOf("a") + 1) + " de tu nombre y apellidos incluidos espacios");
-            document.write("</br>Tu nombre sin las 3 primeras letras es :" + arrayNombreApellidos[0].substring(3));
-            document.write("</br>Tu nombre todo en mayusculas es :" + arrayNombreApellidos[0].toUpperCase());
-            document.write("</br>Tu edad es de  " + calcularEdad(fNac) + " años");
-            document.write("</br>Naciste el feliz día de la semana " + calcularDiaSemana(fNac.getDay()) + " del año " + fNac.getFullYear());
-            document.write("</br>El coseno de 180 es :" + Math.cos(Math.PI));
-            document.write("</br>El menor de los numeros (5,77,42,75,350,19) es :" + Math.min(5, 77, 42, 75, 350, 19));
-            document.write("</br>Ejemplo de número al azar de 1 a 100 :" + Math.round(Math.random() * 100));
+            escribirDatos();
         } else {
             ventana.focus();
         }
-
-
     } else {
 
-        alert("Debe pulsar parte 1 para empezar.");
-    }
-    // zona funciones parte 2;
-    function calcularEdad(fNac) {
+        if (ventana.closed == true) {
+            window.parent.focus();
+            escribirDatos();
+        } else {
 
-        hoy = new Date();
-        cumple = new Date(fNac);
-        cumple.setFullYear(hoy.getFullYear());
-        edad = cumple.getFullYear() - fNac.getFullYear();
-        if (cumple > hoy) {
-            edad--;
+            self.alert("Pulsa parte 1 para empezar");
         }
-        return edad;
     }
+}
 
-    function calcularDiaSemana(num) {
 
-        diasSemana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
-        return diasSemana[num];
+
+// zona funciones parte 2;
+function calcularEdad(fNac) {
+
+    hoy = new Date();
+    cumple = new Date(fNac);
+    cumple.setFullYear(hoy.getFullYear());
+    edad = cumple.getFullYear() - fNac.getFullYear();
+    if (cumple > hoy) {
+        edad--;
     }
+    return edad;
+}
+
+function calcularDiaSemana(num) {
+
+    diasSemana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+
+    return diasSemana[num];
+}
+
+
+
+
+function escribirDatos() {
+
+    window.document.write("<h1> Tarea DWE03</h1>");
+    let nombreApellidos = prompt("Introduce tu nombre y apellidos");
+    let arrayNombreApellidos = nombreApellidos.split(" ", 3);
+    let diaNac = +prompt("Introduce Dia de nacimiento");
+    let mesNac = +prompt("Introduce Mes de nacimiento") - 1;
+    let anoNac = +prompt("Introduce Año de nacimiento");
+    fNac = new Date(anoNac, mesNac, diaNac);
+    window.document.write("</br>Buenos dias " + arrayNombreApellidos[0].toString());
+    window.document.write("</br>Tu nombre y apellidos tiene :" + nombreApellidos.length + " includios espacios");
+    document.write("</br>Tu nombre:" + arrayNombreApellidos[0].length + " sin espacios");
+    document.write("</br>La letra a aparece en la posición : " + (arrayNombreApellidos[0].search("a") + 1) + " de tu nombre.");
+    document.write("</br>La letra a aparece por última vez en la posción : " + (nombreApellidos.lastIndexOf("a") + 1) + " de tu nombre y apellidos incluidos espacios");
+    document.write("</br>Tu nombre sin las 3 primeras letras es :" + arrayNombreApellidos[0].substring(3));
+    document.write("</br>Tu nombre todo en mayusculas es :" + arrayNombreApellidos[0].toUpperCase());
+    document.write("</br>Tu edad es de  " + calcularEdad(fNac) + " años");
+    document.write("</br>Naciste el feliz día de la semana " + calcularDiaSemana(fNac.getDay()) + " del año " + fNac.getFullYear());
+    document.write("</br>El coseno de 180 es :" + Math.cos(Math.PI));
+    document.write("</br>El menor de los numeros (5,77,42,75,350,19) es :" + Math.min(5, 77, 42, 75, 350, 19));
+    document.write("</br>Ejemplo de número al azar de 1 a 100 :" + Math.round(Math.random() * 100));
 }
 /*
 Que escriba en la ventana principal <h1>TAREA DWEC03</h1><hr>
