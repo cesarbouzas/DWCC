@@ -1,15 +1,11 @@
 var ventana;
-
+//abrimos unas ventana pero controlando si ya existe.
 function parte1() {
-    do {
-        abrirVentana();
-
-    }
-    while (!existeVentana());
-
+    abrirVentana();
 
 }
 
+//Si la ventana existe o no ha sido cerrada devuelve true.
 function existeVentana() {
     if ((ventana != null) && (ventana.closed == false)) {
         return true;
@@ -19,6 +15,9 @@ function existeVentana() {
 
 }
 
+
+//Abrimos la ventana comprobando si existe y llamamos a una funcion con un retardo de 5 sg.
+
 function abrirVentana() {
     if (!existeVentana()) {
         ventana = window.open("", "ventana", "width=800,height=500");
@@ -26,10 +25,11 @@ function abrirVentana() {
         ventana.focus();
 
     } else {
+        //En el caso de que exista la ventana le colocamos el foco para verla.
         ventana.focus();
     }
 }
-
+// calcula e imprime en la ventana el contendio pedido y un boton para cerrar
 function datosVentana() {
     let txt;
     ventana.document.write("<h3>Datos ventana</h3>");
@@ -49,11 +49,14 @@ function datosVentana() {
 
 
 
-
+//ejecuion de la segunda parte :
+// debemos pasar por la parte 1 para poder continuar con la parte 2.
 function parte2() {
-
+    // si existe la ventana de la parte 1 sigue abierta pedimos confirmacion para cerrarla y escribimos los datos pedios en la ventana principal
     if (existeVentana()) {
         let op = confirm("¿Cerrar la parte 1 para continuar?");
+
+
         if (op == true) {
             ventana.close();
             window.parent.focus();
@@ -63,6 +66,7 @@ function parte2() {
         }
     } else {
 
+        //Si la ventana de la parte 1 fue creada y cerrada tambien podemos continuar.
         if (ventana.closed == true) {
             window.parent.focus();
             escribirDatos();
@@ -77,6 +81,8 @@ function parte2() {
 
 
 // zona funciones parte 2;
+
+
 function calcularEdad(fNac) {
 
     hoy = new Date();
@@ -89,6 +95,7 @@ function calcularEdad(fNac) {
     return edad;
 }
 
+//getday() devuleve como valor 0 el domingo y así el resto de dias, por ello creo un array con esta disposicion.
 function calcularDiaSemana(num) {
 
     diasSemana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
@@ -98,7 +105,7 @@ function calcularDiaSemana(num) {
 
 
 
-
+//Escribe los datos pedidos en la ventana.
 function escribirDatos() {
 
     window.document.write("<h1> Tarea DWE03</h1>");
