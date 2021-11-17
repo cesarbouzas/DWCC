@@ -1,4 +1,4 @@
-var ventana = new window();
+var ventana;
 
 function parte1() {
     do {
