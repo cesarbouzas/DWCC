@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<lang="es">
+    <meta charset="UTF-8">
+    <html>
+
+    <head>
+        <title>
+            Tabla de multiplicar
+        </title>
+        <script type="text/javascript">
+            function mostrarTabla() {
+                //this.event.preventDefault();
+                numero = (window.document.getElementById("numero").value);
+                let tabla = window.document.getElementById("tabla");
+                let contenido = "<table>";
+                for (i = 0; i <= 10; i++) {
+                    contenido += `<tr><td>${numero} </td> <td>x</td><td>${i}</td><td> ${numero*i}</td></tr>`;
+                }
+                contenido += "</table>";
+
+                setInterval(escribirInner(contenido), 100);
+
+            }
+
+            function escribirInner(con) {
+                tabla.innerHTML = con;
+            }
+        </script>
+    </head>
+
+
+    <body>
+        <h1>Muestra la tabla de multiplicar</h1>
+        <form onsubmit="mostrarTabla()">
+            <label>Introduce numero</label>
+            <input id="numero" type="number" required />
+            <input type="submit" value="muestra la tabla" />
+        </form>
+        <div id="tabla">
+
+
+        </div>
+    </body>
+
+    </html>
