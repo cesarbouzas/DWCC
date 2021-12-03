@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<lang="es">
+    <html>
+
+    <head>
+        <script type="text/javascript">
+            function mostrar() {
+
+                let r = window.document.getElementById("z");
+                let result = "";
+
+                if (true || false) {
+                    result = "verdadero";
+                } else {
+                    result = "falso";
+                }
+                console.log(result);
+
+                setInterval(escribir, 100, result);
+
+            }
+
+            function escribir(con) {
+                r.innerHTML = `<p> el resultado es ${con}</p>`;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>pruebas ejemplos</h1>
+        <button onclick="mostrar()">mostrar</button>
+        <div id="z">
+
+
+        </div>
+    </body>
+
+    </html>

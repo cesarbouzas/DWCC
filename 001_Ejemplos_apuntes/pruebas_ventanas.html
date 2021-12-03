@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<lang="es">
+    <html>
+
+    <head>
+        <title>Página principal</title>
+        <script type="text/javascript">
+            let nuevaVentana;
+
+            function abrirVentana() {
+
+                if (!nuevaVentana || nuevaVentana == null) {
+
+                    nuevaVentana = window.open("", "nueva", "height=400,width=800");
+                    nuevaVentana.document.write("hola");
+                } else {
+                    nuevaVentana.focus();
+                }
+            }
+
+            function cerrarVentana() {
+                if (nuevaVentana) {
+                    nuevaVentana.close();
+                    nuevaVentana = null;
+                }
+
+            }
+        </script>
+
+
+
+    </head>
+
+    <body>
+        <h1>Esta es la web principal</h1>
+        <form>
+            <input type="button" id="abrir" value="Abrir Ventana" onclick="abrirVentana()" />
+            <input type="button" id="cerrar" value="Cerrar" onclick="cerrarVentana()" />
+        </form>
+    </body>
+
+    </html>

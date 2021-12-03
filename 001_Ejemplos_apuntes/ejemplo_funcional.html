@@ -9,21 +9,23 @@
         </title>
         <script type="text/javascript">
             function mostrarTabla() {
-                //this.event.preventDefault();
+
                 numero = (window.document.getElementById("numero").value);
                 let tabla = window.document.getElementById("tabla");
                 let contenido = "<table>";
                 for (i = 0; i <= 10; i++) {
                     contenido += `<tr><td>${numero} </td> <td>x</td><td>${i}</td><td> ${numero*i}</td></tr>`;
+                    console.log(`${numero}x${i}=${numero*i}`);
                 }
                 contenido += "</table>";
 
-                setInterval(escribirInner(contenido), 100);
+                setInterval(escribirInner, 100, contenido);
 
             }
 
             function escribirInner(con) {
                 tabla.innerHTML = con;
+
             }
         </script>
     </head>
@@ -31,10 +33,10 @@
 
     <body>
         <h1>Muestra la tabla de multiplicar</h1>
-        <form onsubmit="mostrarTabla()">
+        <form>
             <label>Introduce numero</label>
             <input id="numero" type="number" required />
-            <input type="submit" value="muestra la tabla" />
+            <input type="button" value="muestra la tabla" onclick="mostrarTabla()" />
         </form>
         <div id="tabla">
 
