@@ -4,6 +4,8 @@ class Edificio {
     //cp;
     //plantas = new Array(new Array());
 
+
+    //Constructor con calle numero codigo postal y un array de plantas vacio, al finalizar imprimimos la informacion
     constructor(calle, numero, cp, plantas) {
         this.calle = calle;
         this.numero = numero;
@@ -12,42 +14,51 @@ class Edificio {
         this.infoEdificio();
     }
 
-
+    //imprime la informacion de la construccion de un edifcio 
     infoEdificio() {
 
-        console.log(`Construido un edifico en ${this.calle} Nº ${this.numero} ,CP=${this.cp} y ${this.plantas.length} plantas`);
-    }
-    agregarPlantasyPuertas(nplantas, npuertas) {
-        for (let i = 0; i < nplantas; i++) {
-            this.plantas.push(new Array(npuertas));
+            console.log(`Construido un edifico en ${this.calle} Nº ${this.numero} ,CP=${this.cp} y ${this.plantas.length} plantas`);
         }
+        // Agregamos mediante push primero las plas plantas u dentro de cada una un array con las puertas
+    agregarPlantasyPuertas(nplantas, npuertas) {
+            for (let i = 0; i < nplantas; i++) {
+                this.plantas.push(new Array(npuertas));
+            }
 
-    }
+        }
+        //modifica el numero del edificio
     modificarNumero(n) {
-        this.numero = n;
-    }
+            this.numero = n;
+        }
+        //modifica la calle del edifico
     modificarCalle(calle) {
-        this.calle = calle;
-    }
+            this.calle = calle;
+        }
+        //modifica el codigo postal del edificio
     modificarCodigoPostal(cp) {
-        this.cp = cp;
-    }
+            this.cp = cp;
+        }
+        //imprime por consola la calle del edificio
     imprimirCalle() {
 
-        console.log(this.calle);
-    }
+            console.log(this.calle);
+        }
+        //imprime por consolael numero del edificio
     imprimirNumero() {
-        console.log(this.numero);
-    }
+            console.log(this.numero);
+        }
+        //imprime por consola el codigo postal del edificio
     imprimirCodigoPostal() {
-        console.log(this.cp);
-    }
+            console.log(this.cp);
+        }
+        // agrega al edificio el propietario introduciendo el numero de planta y puerta desde 1 y no desde 0 como los arrays
     agregarPropietario(nombre, planta, puerta) {
-        planta -= 1;
-        puerta -= 1;
-        this.plantas[planta][puerta] = nombre;
-        console.log(`${nombre} es ahora es el propietario de la puerta ${puerta+1} en la planta ${planta+1}`);
-    }
+            planta -= 1;
+            puerta -= 1;
+            this.plantas[planta][puerta] = nombre;
+            console.log(`${nombre} es ahora es el propietario de la puerta ${puerta+1} en la planta ${planta+1}`);
+        }
+        //recorre las plantas i y las puertas j y nos devuleve el propietario , en el caso de que no tenga no imprime nada en el nombre
     imprimePlantas() {
         for (let i = 0; i < this.plantas.length; i++) {
             for (let j = 0; j < this.plantas[i].length; j++) {
@@ -73,16 +84,20 @@ console.log(`El edificio B está situado en la calle ${edificioB.calle} número 
 //agregamos 2 plantas y 3 puertas por planta al edificio A
 
 edificioA.agregarPlantasyPuertas(2, 3);
-console.log(edificioA.plantas[0].length);
+//console.log(edificioA.plantas[0].length); //comprobaciones durante la programacion
+
+//agregamos los propietarios en las plantas y puertas indicadas.
 edificioA.agregarPropietario("Jose Antonio Lopez", 1, 1)
 edificioA.agregarPropietario("Luisa Martinez", 1, 2);
 edificioA.agregarPropietario("Marta Castellon", 1, 3);
 edificioA.agregarPropietario("JAntonio Pereira", 2, 2);
-
+//imprimimos todos los porpietarios del edificio A
 edificioA.imprimePlantas();
+//Agregamos una planta 
 edificioA.agregarPlantasyPuertas(1, 3);
+//agregamos un nuevo propietario en la nueva planta en la puerta 2
 edificioA.agregarPropietario("Pedro Mejide", 3, 2);
-
+//volvemos a imprimir el edificioA completo
 edificioA.imprimePlantas();
 
 
