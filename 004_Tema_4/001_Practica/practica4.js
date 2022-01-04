@@ -1,23 +1,26 @@
 class Edificio {
-    calle;
-    numero;
-    cp;
-    plantas = new Array(new Array());
+    //calle;
+    //numero;
+    //cp;
+    //plantas = new Array(new Array());
 
-    constructor(calle, numero, cp) {
+    constructor(calle, numero, cp, plantas) {
         this.calle = calle;
         this.numero = numero;
         this.cp = cp;
+        this.plantas = new Array();
         this.infoEdificio();
     }
 
 
     infoEdificio() {
 
-        console.log("Construido un edifico de  ${Edificio.toString}");
+        console.log(`Construido un edifico en ${this.calle} Nº ${this.numero} ,CP=${this.cp} y ${this.plantas.length} plantas`);
     }
     agregarPlantasyPuertas(nplantas, npuertas) {
-        return this.plantas.push(nplantas[npuertas]);
+        for (let i = 0; i < nplantas; i++) {
+            this.plantas.push(new Array(npuertas));
+        }
 
     }
     modificarNumero(n) {
@@ -41,7 +44,7 @@ class Edificio {
     }
     agregarPropietario(nombre, planta, puerta) {
         this.plantas[planta][puerta] = nombre;
-        console.log("ahora es el propietario de la puerta ${puerta} en la planta ${planta}")
+        console.log(`ahora es el propietario de la puerta ${puerta} en la planta ${planta}`);
     }
     imprimePlantas() {
         for (let i = 0; i < this.plantas.length; i++) {
@@ -52,8 +55,19 @@ class Edificio {
         }
     }
 }
+//Construimos 3 edificios con los datos facilitados
+edificioA = new Edificio("Garcia Prieto", 58, 15706);
+edificioB = new Edificio("Camino Caneiro", 29, 32004);
+edificioC = new Edificio("San Clemente", "s/n", 15705);
 
-ed1 = new Edificio("che guevara 153", 153, 15179);
+//Imprimimos los datos de ciertos edificios pedidos
+console.log(`El codigo postal del edificio A es :${edificioA.cp}`);
+console.log(`La calle del edificio C es :${edificioC.calle}`);
+console.log(`El edificio B está situado en la calle ${edificioB.calle} número ${edificioB.numero} `);
+//agregamos 2 plantas y 3 puertas por planta al edificio A
+
+edificioA.agregarPlantasyPuertas(2, 3);
+console.log(edificioA.plantas.length);
 
 
 
