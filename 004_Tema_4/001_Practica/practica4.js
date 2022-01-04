@@ -43,14 +43,20 @@ class Edificio {
         console.log(this.cp);
     }
     agregarPropietario(nombre, planta, puerta) {
+        planta -= 1;
+        puerta -= 1;
         this.plantas[planta][puerta] = nombre;
-        console.log(`ahora es el propietario de la puerta ${puerta} en la planta ${planta}`);
+        console.log(`${nombre} es ahora es el propietario de la puerta ${puerta+1} en la planta ${planta+1}`);
     }
     imprimePlantas() {
         for (let i = 0; i < this.plantas.length; i++) {
-            console.log("En la planta ${i} viven :/n")
-            for (let j = 0; j < plantas[i].length; j++) {
-                console.log("Puerta ${j} : plantas[i][j]");
+            for (let j = 0; j < this.plantas[i].length; j++) {
+                if (this.plantas[i][j]) {
+                    console.log(`El propietario del piso ${j+1} de la planta ${i+1} es :${this.plantas[i][j]}`);
+                } else {
+                    console.log(`El propietario del piso ${j+1} de la planta ${i+1} es :`);
+                }
+
             }
         }
     }
@@ -67,9 +73,17 @@ console.log(`El edificio B está situado en la calle ${edificioB.calle} número 
 //agregamos 2 plantas y 3 puertas por planta al edificio A
 
 edificioA.agregarPlantasyPuertas(2, 3);
-console.log(edificioA.plantas.length);
+console.log(edificioA.plantas[0].length);
+edificioA.agregarPropietario("Jose Antonio Lopez", 1, 1)
+edificioA.agregarPropietario("Luisa Martinez", 1, 2);
+edificioA.agregarPropietario("Marta Castellon", 1, 3);
+edificioA.agregarPropietario("JAntonio Pereira", 2, 2);
 
+edificioA.imprimePlantas();
+edificioA.agregarPlantasyPuertas(1, 3);
+edificioA.agregarPropietario("Pedro Mejide", 3, 2);
 
+edificioA.imprimePlantas();
 
 
 
