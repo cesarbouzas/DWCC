@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+    <script>
+        /* Ejercicio1
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        let i = 5;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        let n = 10;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        while (i < 10) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        i++;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        if (i == 8)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        continue;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        n += i;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        document.writeln(`<p>El valor de i=${i} el valor de n=${n}-> ${n+""}</p>`);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        */
+        /*
+        //Ejercicio2
+                let sum = 0;
+                console.log(`Ejercicio2:`);
+                while (true) {
+                    let value = +prompt("introduce un valor", "");
+                    if (!value) break;
+                    sum += value;
+                    console.log("El valor final de la variable value es: " + value);
+                }
+                console.log(`sum : ${sum}`);
+                console.log("El valor final de la variable value es: " + value);
+          */
+        /*       //ejercicio3
+        for (let i = 1; i <= 100; i++) {
+            if (i % 8 != 0) continue;
+            document.writeln(`<p>${i}</p>`);
+        }
+        */
+        /*
+        //Ejercicio 4
+
+
+
+        let valor = prompt("Escribe la sigla del módulo");
+        switch (valor) {
+            case "AWDC":
+                document.write("Desarrollo Web en entorno cliente");
+                break;
+            case "AWDS":
+                document.write("Desarrollo Web en entorno servidor");
+                break;
+            case "AWLM":
+                document.write("Lenguaje de Marcas");
+                break;
+            case "AWDI":
+                document.write("Desarrollo de interfaces web");
+                break;
+            default:
+                document.write("Esto de las siglas es un lío");
+        }
+        */
+        /*Ejercici4
+         let i = 3;
+         while (i) {
+             alert(i--);
+         }
+         */
+        /*Ejejercicio5
+        let cont = 0;
+        for (let i = 0; i < 5; i++) {
+
+            document.write(`<p>${cont} : valor de i ${i} con i++</p>`);
+            cont++;
+        }
+        cont = 0;
+        for (let i = 0; i < 5; ++i) {
+
+            document.write(`<p>${cont}valor de i ${i} con ++i</p>`);
+            cont++;
+        }
+        */
+
+        /*Ejercicio3
+
+        let arg = prompt("Introduce un número");
+        switch (arg) {
+            case '0':
+            case '1':
+                alert('Uno o cero');
+                break;
+            case '2':
+                alert('Dos');
+                break;
+            case 3:
+                alert('Tres');
+                break;
+            default:
+                alert("valor desconocido");
+        }
+        */
+        // Elabora un script que solicite un número mayor que 100.
+        //En caso de que el usuario introduzca otro número se le
+        //pedirá que vuelva a introducir otro de nuevo.
+        // Resuélvelo utilizando un bucle do while.
+
+        /*Ejercicio 8
+        
+        let numero;//ojo con declararlo dentro que la lias
+
+        do {
+            numero = +prompt("introduce un numero mayor de 100", "");
+            console.log(`<p>El numero introducido es ${numero}</p>`);
+            if (!numero) {
+                break;
+            }
+        } while (numero <= 100);
+
+        */
+        let lenguaje = prompt("Introduce lenguaje:");
+        if (lenguaje == "html" || lenguaje == "css") {
+            alert("lenguaje lado cleinte");
+        } else if (lenguaje == "php" || lenguaje == "Ruby" || lenguaje == "python") {
+            alert("lenguaje del lado servidor");
+        } else if (lenguaje == "javascript") {
+            alert("Lenguaje del lado cliente y servidor");
+        } else {
+            alert("me has pillado lenguaje no registrado");
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

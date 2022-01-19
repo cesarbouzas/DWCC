@@ -101,7 +101,7 @@ edificioA.agregarPropietario("JAntonio Pereira", 2, 2);
 //imprimimos todos los porpietarios del edificio A
 edificioA.imprimePlantas();
 //Agregamos una planta 
-edificioA.agregarPlantasyPuertas(3, 3);
+edificioA.agregarPlantasyPuertas(1, 3);
 //agregamos un nuevo propietario en la nueva planta en la puerta 2
 edificioA.agregarPropietario("Pedro Mejide", 3, 2);
 //volvemos a imprimir el edificioA completo
