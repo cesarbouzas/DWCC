@@ -35,8 +35,8 @@ function pasarMayus(event){
 function validar(event){
     valido=true;
     valido=valido && validarNombreYapellidos();
-    //valido=valido && validarEmail();
-    //valido=validarEmail()&&valido;
+    //valido=valido && validarEmail();// asi ejecuto solo hasta que una sea false.
+    //valido=validarEmail()&&valido;//asi se ejecutan todas las funciones ...
 
     if(!valido){
         console.log("false");
