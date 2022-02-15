@@ -1,3 +1,16 @@
+function manjearAltitud(event) {
+    let elemento = event.target;
+    elemento.value = "up" ? altitud.innerHTML = altitud.innerHTML - 5 : altitud.innerHTML = altitud.innerHTML - (-5)
+
+}
+
+function acelarar(event) {}
+
+
+
+
+
+
 function descender() {
     let altitud = document.getElementById("altitud");
 
@@ -21,10 +34,10 @@ function encender() {
     avionmsg.innerHTML = "Encendido"
 
     let palacadown = document.getElementById("palancadown")
-    palacadown.addEventListener("click", ascender)
+    palacadown.addEventListener("click", manjearAltitud)
 
     let palancaup = document.getElementById("palancaup")
-    palancaup.addEventListener("click", descender)
+    palancaup.addEventListener("click", manjearAltitud)
 
 
 }
