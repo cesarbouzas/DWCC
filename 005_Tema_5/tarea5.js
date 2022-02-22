@@ -2,7 +2,7 @@ function validarNombreYapellidos() {
     let nombre = document.getElementById("nombre").value;
     let apellidos = document.getElementById("apellidos").value;
     let re = new RedExp('^[a-zA-Z]+$');
-    
+
     correcto = re.test(nombre) && re.test(apellidos);
     //probamos como match
     if (!corecto) {
@@ -29,6 +29,16 @@ function pasarMayus(event) {
 
 }
 
+//una cokie es como una sesion de php .
+//las cookies se guardan para cada web son simepre clave valor y una fecha de expiracion
+
+function setCookie(){
+
+}
+function getcookie(){
+
+}
+//w3scholl
 
 
 //el event lo rellena con el evento que venga
@@ -42,6 +52,10 @@ function validar(event) {
         console.log("false");
         //console.log("event");
         event.preventDefault();
+        let cookie=document.cokkie;
+        
+        document.cookie("intentos=1");
+        alert(docuemnt.cookie);
     }
 }
 
