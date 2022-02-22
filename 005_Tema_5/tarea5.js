@@ -15,7 +15,10 @@ function validarNombreYapellidos() {
     //console.log(event.target);
 }
 
+//tes regular expresion regex101.com ^([0-9]|[1-9][0-9]|10[0-5])$
+//^([a-zA-Z0-9)([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)(\.[a-zA-Z]+)$
 
+function validarEmail(){}
 
 
 function pasarMayus(event) {
