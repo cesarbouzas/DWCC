@@ -2,6 +2,7 @@ function validarNombreYapellidos() {
     let nombre = document.getElementById("nombre").value;
     let apellidos = document.getElementById("apellidos").value;
     let re = new RedExp('^[a-zA-Z]+$');
+    
     correcto = re.test(nombre) && re.test(apellidos);
     //probamos como match
     if (!corecto) {
