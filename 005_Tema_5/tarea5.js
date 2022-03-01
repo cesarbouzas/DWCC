@@ -7,19 +7,21 @@ function validarNombreYapellidos() {
     //probamos como match
     if (!corecto) {
 
-        mostrarError();
-        PonerFoco();
+        //mostrarError();
+        //PonerFoco();
         return false;
     }
-    console.log("cumple");
+    docuemnt.getElementById("error").value = "nombre y/o apellidos invalidos"
     return true;
     //console.log(event.target);
 }
 
+
+
 //tes regular expresion regex101.com ^([0-9]|[1-9][0-9]|10[0-5])$
 //^([a-zA-Z0-9)([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)(\.[a-zA-Z]+)$
 
-function validarEmail(){}
+function validarEmail() {}
 
 
 function pasarMayus(event) {
@@ -32,30 +34,46 @@ function pasarMayus(event) {
 //una cokie es como una sesion de php .
 //las cookies se guardan para cada web son simepre clave valor y una fecha de expiracion
 
-function setCookie(){
+function setCookie(valor) {
+    document.cookie = `intentos=${valor}`;
 
 }
-function getcookie(){
 
+
+
+
+//w3scholl fuente
+function getCookie(cname) {
+    let name = cname + "=";
+    let stringDeCookies = document.cookie;
+    let arrayDeCookies = stringDeCookies.split(';');
+    for (let i = 0; i < arrayDeCookies.length; i++) {
+        let cookie = arrayDeCookies[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(name) == 0) {
+            return cookie.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
-//w3scholl
+
 
 
 //el event lo rellena con el evento que venga
 function validar(event) {
+    setCookie(intentos) = getCookie("intentos") + 1
     valido = true;
     valido = valido && validarNombreYapellidos();
     //valido=valido && validarEmail();// asi ejecuto solo hasta que una sea false.
     //valido=validarEmail()&&valido;//asi se ejecutan todas las funciones ...
 
     if (!valido) {
+
         console.log("false");
         //console.log("event");
         event.preventDefault();
-        let cookie=document.cokkie;
-        
-        document.cookie("intentos=1");
-        alert(docuemnt.cookie);
     }
 }
 
@@ -63,15 +81,20 @@ function validar(event) {
 
 
 function iniciareventos() {
+    let intentos = 0;
+    let errores = 0;
     let formulario = document.getElementById("formulario");
     //console.log(botonEnviar);
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("apellidos");
+    document.getElementById("intentos").innerHTML = setCookie("intentos");
+
+    nombre.addEventListener("blur", pasarMayus);
+    apellidos.addEventListener("blur", pasarMayus);
 
 
     formulario.addEventListener("submit", validar);
-    nombre.addEventListener("blur", pasarMayus);
-    apellidos.addEventListener("blur", pasarMayus);
+
 
 
 }
