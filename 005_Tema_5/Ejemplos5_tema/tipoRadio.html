@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajano con tip radio</title>
+</head>
+
+<body>
+    <form id="formulario" name="formulario">
+        <fieldset>
+            <legend>Selecciona tu liada favorita de colombiano (solo una opción)</legend>
+            <label>Quemar el timbre</label>
+            <input type="radio" name="grupo1" id="quemartimbre" value="Me quemó el timbre a las 8 de la mañana , quería entrar a dormir a mi casa sin avisar, con el pedo no lo oimos,estuvimos casi dos años sin oir al cartero"><br>
+            <label>Hacer zubis en Santander</label>
+            <input type="radio" name="grupo1" id="santander" value="Se tiro al suelo al primer amago de sope ,veras cuando llegue al tema multimedia"><br>
+            <label>Bañarse en las duchas mientras charlaba con la policia local de oleiros</label>
+            <input type="radio" name="grupo1" id="ducha" value="Me la comeis every body"><br>
+            <label>Ver como le apagaban un pitillo a bailon en el pecho</label>
+            <input type="radio" name="grupo1" id="ducha" value="cigar al pecho---poco me parece">
+            <br> <br>
+            <input type="submit" value="enviar" name="consultar" id="consultar">
+
+        </fieldset>
+    </form>
+
+    <script type="text/javascript">
+        let formulario = document.getElementById("formulario");
+        formulario.addEventListener("click", imprimir);
+
+        function seleccion() {
+            let arrayRadio = document.formulario.grupo1;
+            console.log(arrayRadio);
+            for (let i = 0; i < arrayRadio.length; i++) {
+                console.log(arrayRadio[i].checked);
+                if (arrayRadio[i].checked) {
+                    console.log(arrayRadio[i].value.toString());
+                    return (arrayRadio[i].value);
+                }
+            }
+            return "elige una opcion cabron";
+        }
+
+        function imprimir() {
+            alert(seleccion())
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
