@@ -1,9 +1,9 @@
-function validarNombreYApellidos() {
+function validarNombreApellidos() {
     let nombre = document.getElementById("nombre").value;
     let apellidos = document.getElementById("apellidos").value;
-    let re = new RedExp(/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/);
+    let re = new RegExp(/^[A-Z-a-z]+$/);
 
-    let correcto = re.test(nombre) && re.test(apellidos);
+    correcto = re.test(nombre) && re.test(apellidos);
     //probamos como match
     if (!correcto) {
 
@@ -34,7 +34,7 @@ function validarEdad() {
 function validarNif() {
     let nif = document.getElementById("nif").value;
     //Patrón debe de ser 8 números entre 0 y 9 y una letra entre A-Z mayúscula o minúscula.
-    let patron = new RegExp(/^[0-9]{8}-[a-zA-Z]{1}$/);
+    let patron = new RegExp(/^[0-9]{8}[a-zA-Z]{1}$/);
     correcto = patron.test(nif);
     if (!correcto) {
         document.getElementById("errores").innerHTML = "Formato de NIF incorrecto.";
@@ -155,7 +155,7 @@ function validar(event) {
     setCookie(intentos);
     document.getElementById("intentos").innerHTML = "Llevas " + intentos + " intentos;";
     let valido = true;
-    valido = valido && validarNombreYApellidos();
+    valido = valido && validarNombreApellidos();
     valido = valido && validarEdad();
     valido = valido && validarNif();
     valido = valido && validarEmail();
@@ -174,9 +174,11 @@ function validar(event) {
 
 function iniciarEventos() {
     document.cookie = "intento=; max-age=0";
+
     let formulario = document.getElementById("formulario");
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("apellidos");
+    nombre.
     nombre.addEventListener("blur", pasarMayus);
     apellidos.addEventListener("blur", pasarMayus);
     formulario.addEventListener("submit", validar);
