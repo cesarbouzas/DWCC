@@ -1,4 +1,4 @@
-function validarNombreYapellidos() {
+/*function validarNombreYapellidos() {
     let nombre = document.getElementById("nombre").value;
     let apellidos = document.getElementById("apellidos").value;
     let re = new RedExp('^[a-zA-Z]+$');
@@ -15,13 +15,13 @@ function validarNombreYapellidos() {
     return true;
     //console.log(event.target);
 }
-
+*/
 
 
 //tes regular expresion regex101.com ^([0-9]|[1-9][0-9]|10[0-5])$
 //^([a-zA-Z0-9)([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)(\.[a-zA-Z]+)$
 
-function validarEmail() {}
+//function validarEmail() {}
 
 
 function pasarMayus(event) {
@@ -35,7 +35,7 @@ function pasarMayus(event) {
 //las cookies se guardan para cada web son simepre clave valor y una fecha de expiracion
 
 function setCookie(valor) {
-    document.cookie = `intentos=${valor}`;
+    document.cookie = "intento=" + valor;
 
 }
 
@@ -45,7 +45,7 @@ function setCookie(valor) {
 //w3scholl fuente
 function getCookie(cname) {
     let name = cname + "=";
-    let stringDeCookies = document.cookie;
+    let stringDeCookies = decodeURIComponent(document.cookie);
     let arrayDeCookies = stringDeCookies.split(';');
     for (let i = 0; i < arrayDeCookies.length; i++) {
         let cookie = arrayDeCookies[i];
@@ -53,26 +53,28 @@ function getCookie(cname) {
             cookie = cookie.substring(1);
         }
         if (cookie.indexOf(name) == 0) {
-            return cookie.substring(name.length, c.length);
+            return cookie.substring(name.length, cookie.length);
         }
     }
-    return "";
+    return "0";
 }
-
-
+/*
+function borrarCookie(nombre) {
+    crearCookie(nombre, "", -1);
+}
+*/
 
 //el event lo rellena con el evento que venga
 function validar(event) {
-    setCookie(intentos) = getCookie("intentos") + 1
-    valido = true;
-    valido = valido && validarNombreYapellidos();
+    let intentos = parseInt(getCookie("intento")) + 1;
+    setCookie(intentos);
+    document.getElementById("intentos").innerHTML = "Llevas " + intentos + " intentos;";
+    let valido = false;
+
     //valido=valido && validarEmail();// asi ejecuto solo hasta que una sea false.
     //valido=validarEmail()&&valido;//asi se ejecutan todas las funciones ...
 
     if (!valido) {
-
-        console.log("false");
-        //console.log("event");
         event.preventDefault();
     }
 }
@@ -81,24 +83,15 @@ function validar(event) {
 
 
 function iniciareventos() {
-    let intentos = 0;
-    let errores = 0;
+    document.cookie = "intento=; max-age=0";
     let formulario = document.getElementById("formulario");
-    //console.log(botonEnviar);
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("apellidos");
-    document.getElementById("intentos").innerHTML = setCookie("intentos");
-
     nombre.addEventListener("blur", pasarMayus);
     apellidos.addEventListener("blur", pasarMayus);
-
-
     formulario.addEventListener("submit", validar);
-
-
-
 }
-document.addEventListener("DOMContentLoaded", iniciareventos)
+document.addEventListener("DOMContentLoaded", iniciareventos);
 
 
 
