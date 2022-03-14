@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica funciones</title>
+</head>
+
+<body>
+    <p id="r1"></p>
+    <p id="r2"></p>
+    <p id="r3"></p>
+    <p id="r4"></p>
+    <p id="r5"></p>
+    <script type="text/javascript">
+        function sumar(parametro1, parametro2) {
+
+            return parametro1 + parametro2;
+        }
+        //esta sintaxis tradicional de definir funciones .
+        //pero hoy en día es mas recomendable el uso del operador flecha , seria la siguiente forma
+
+
+        const sumar2 = (numero1, numero2) => {
+            return numero1 + numero2;
+        }
+
+
+
+        document.getElementById("r1").innerHTML = sumar(2, 2);
+        document.getElementById("r2").innerHTML = sumar2(2, 2);
+        resultado = sumar(99, 101);
+        console.log(resultado);
+
+        const saludar = (txt) => {
+            return `hola ${txt} , buneos dias`;
+        }
+
+        document.getElementById("r3").innerHTML = saludar("cesar");
+
+        const calculaMayor = (num1, num2) => {
+
+            return (num1 < num2) ? num2 : num1;
+
+        }
+
+
+        document.getElementById("r4").innerHTML = `el mayor de 5 y 99 es ${calculaMayor(5,99)}`;
+
+
+        //ambito de las variablles
+
+        let nombre = "cesar";
+
+        const muestraNombre = () => {
+            let nombre = "pablo";
+            console.log(nombre);
+        }
+        console.log(nombre) //muestra cesar;
+        muestraNombre() //muestra pablo;
+        console.log(nombre) //muestra cesar;
+
+        // funciones anidadas
+
+        const calcularHipotenusa = (c1, c2) => {
+
+            const calcularCuadrado = (x) => {
+                return x * x;
+            }
+            return Math.sqrt(calcularCuadrado(c1) + calcularCuadrado(c2));
+        }
+        document.getElementById("r5").innerHTML = "la hipotenusa de 3 , 4 es :" + calcularHipotenusa(3, 4);
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

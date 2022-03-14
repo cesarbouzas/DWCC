@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practica con arrays</title>
+</head>
+
+<body>
+
+    <p id="salida1"></p>
+    <p id="salida2"></p>
+    <p id="salida3"></p>
+    <p id="salida4"></p>
+    <p id="salida5"></p>
+    <script type="text/javascript">
+        //craccion de arrays 
+        let coches = ["seat ", "nissasan ", "subaru ", "audi "];
+        let numeros = [1, 2, 3, 5, 8, 3, 4, 10];
+        let varios = [1, "audi ", 3, "seat "];
+
+        document.getElementById("salida1").innerHTML = coches;
+
+
+
+        //tambien posible usar la nomneclatura de objeto
+
+        let peliculas = new Array();
+
+        peliculas[0] = "indiana jones ";
+        peliculas[1] = "atrapado en el tiempo ";
+        peliculas[3] = "cazafantasmas "
+        let resultado = "(";
+        for (let i = 0; i < peliculas.length; i++) {
+
+            resultado = resultado + "  ; " + peliculas[i];
+        }
+        resultado += ")";
+        document.getElementById("salida2").innerHTML = resultado;
+
+
+
+
+
+        //tambien es posible los arrays asociativos 
+
+        let apellidos = new Array();
+
+        apellidos["cesar"] = "bouzas";
+        apellidos["pablo"] = "hurtado";
+        apellidos["manuel"] = "Rey";
+
+        document.getElementById("salida3").innerHTML = `El jefe de obra es ${apellidos["pablo"]} pero el que más manda es ${apellidos["manuel"]} , TLM es sin duda ${apellidos["cesar"]}`;
+
+        resultado = "(";
+        for (let i in apellidos) {
+
+            resultado = resultado + " " + apellidos[i];
+        }
+        resultado = resultado + ")";
+
+        document.getElementById("salida4").innerHTML = resultado;
+
+        resultado = "(";
+        apellidos.forEach(apellido => resultado = resultado + " , " + apellido);
+        resultado = resultado + ")";
+        document.getElementById("salida5").innerHTML = resultado;
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
