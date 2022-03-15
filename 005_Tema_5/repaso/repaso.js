@@ -1,6 +1,5 @@
-console.log(document.getElementById("nombre").value);
-let nombre = document.getElementById("nombre").value;
-let apellidos = document.getElementById("apellidos").value;
+let nombre = document.getElementById("nombre");
+let apellidos = document.getElementById("apellidos");
 
 
 let formulario = document.getElementById("form");
