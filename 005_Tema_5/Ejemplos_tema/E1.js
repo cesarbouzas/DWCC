@@ -11,4 +11,4 @@ function imprimir() {
 
 //console.log(document.forms[0].elements[0].value); // deberia ser el valor del nombre
 let formulario = document.getElementById("formulario");
-formulario.addEventListener("submit", imprimir);
+formulario.addEventListener(submit, imprimir);
