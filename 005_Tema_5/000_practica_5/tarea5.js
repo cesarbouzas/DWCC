@@ -1,28 +1,75 @@
-function validarNombreYapellidos() {
+function validarNombreApellidos() {
     let nombre = document.getElementById("nombre").value;
     let apellidos = document.getElementById("apellidos").value;
-    let re = new RedExp('^[a-zA-Z]+$');
+    let re = new RegExp(/^[A-Z-a-z]+$/);
 
     correcto = re.test(nombre) && re.test(apellidos);
     //probamos como match
-    if (!corecto) {
+    if (!correcto) {
 
-        //mostrarError();
-        //PonerFoco();
+        //mostrarError
+
+        document.getElementById("errores").innerHTML = "nombre/apellidos con formato no válido";
+
+        //PonerFoco
+        document.getElementById("nombre").focus();
+        document.getElementById("apellidos").focus();
         return false;
     }
-    docuemnt.getElementById("error").value = "nombre y/o apellidos invalidos"
+
     return true;
     //console.log(event.target);
 }
 
+function validarEdad() {
+    let edad = document.getElementById("edad").value;
+    if (isNaN(edad) || edad < 0 || edad > 105) {
+        document.getElementById("errores").innerHTML = "Formato de edad incorrecto.";
+        document.getElementById("edad").focus();
+        return false;
+    }
+    return true;
+}
+
+function validarNif() {
+    let nif = document.getElementById("nif").value;
+    //Patrón debe de ser 8 números entre 0 y 9 y una letra entre A-Z mayúscula o minúscula.
+    let patron = new RegExp(/^[0-9]{8}[a-zA-Z]{1}$/);
+    correcto = patron.test(nif);
+    if (!correcto) {
+        document.getElementById("errores").innerHTML = "Formato de NIF incorrecto.";
+        document.getElementById("nif").focus();
+        return false;
+    }
+    return true;
+}
 
 
 //tes regular expresion regex101.com ^([0-9]|[1-9][0-9]|10[0-5])$
 //^([a-zA-Z0-9)([a-zA-Z0-9._]+)@([a-zA-Z0-9]+)(\.[a-zA-Z]+)$
+function validarEmail() {
+    let email = document.getElementById("email").value;
+    let patron = new RegExp(/^([a-zA-Z0-9])+([a-zA-Z0-9._-])+@([a-zA-Z0-9.-])+(\.([a-zA-Z]{2,4}))$/);
+    correcto = patron.test(email);
+    if (!correcto) {
+        document.getElementById("errores").innerHTML = "Formato de email incorrecto.";
+        document.getElementById("email").focus();
+        return false;
+    }
+    return true;
+}
 
-function validarEmail() {}
 
+function validarProvincia() {
+    let provincia = document.getElementById("provincia").value;
+    if (provincia == 0) {
+        document.getElementById("errores").innerHTML = "Debe seleccionar una provincia.";
+        document.getElementById("provincia").focus();
+        return false;
+    } else {
+        return true;
+    }
+}
 
 function pasarMayus(event) {
     let elemento = event.target;
@@ -31,21 +78,56 @@ function pasarMayus(event) {
 
 }
 
+
+function validarFecha() {
+    let fecha = document.getElementById("fecha").value;
+    let patron = new RegExp(/^(0[1-9]|1\d|2\d|3[0-1])-(0[1-9]|1[0-2])-\d{4}$/);
+    correcto = patron.test(fecha);
+    if (!correcto) {
+        document.getElementById("errores").innerHTML = "Formato de fecha incorrecto.";
+        document.getElementById("fecha").focus();
+        return false;
+    }
+    return true;
+}
+
+function validarTelefono() {
+    let telf = document.getElementById("telefono").value;
+    let patron = new RegExp(/^[0-9]{9}$/);
+    correcto = patron.test(telf);
+    if (!correcto) {
+        document.getElementById("errores").innerHTML = "Formato de teléfono incorrecto.";
+        document.getElementById("telefono").focus();
+        return false;
+    }
+    return true;
+}
+
+function validarHora() {
+    let hora = document.getElementById("hora").value;
+    let patron = new RegExp(/^(0[1-9]|1\d|2[0-3]):([0-5]\d)$/);
+    correcto = patron.test(hora);
+    if (!correcto) {
+        document.getElementById("errores").innerHTML = "Formato de hora incorrecto.";
+        document.getElementById("hora").focus();
+        return false;
+    }
+    return true;
+}
+
+
 //una cokie es como una sesion de php .
 //las cookies se guardan para cada web son simepre clave valor y una fecha de expiracion
 
 function setCookie(valor) {
-    document.cookie = `intentos=${valor}`;
+    document.cookie = `intento=${valor}`;
 
 }
-
-
-
 
 //w3scholl fuente
 function getCookie(cname) {
     let name = cname + "=";
-    let stringDeCookies = document.cookie;
+    let stringDeCookies = decodeURIComponent(document.cookie);
     let arrayDeCookies = stringDeCookies.split(';');
     for (let i = 0; i < arrayDeCookies.length; i++) {
         let cookie = arrayDeCookies[i];
@@ -53,26 +135,36 @@ function getCookie(cname) {
             cookie = cookie.substring(1);
         }
         if (cookie.indexOf(name) == 0) {
-            return cookie.substring(name.length, c.length);
+            return cookie.substring(name.length, cookie.length);
         }
     }
-    return "";
+    return "0";
 }
-
-
-
+/*
+function borrarCookie(nombre) {
+    crearCookie(nombre, "", -1);
+}
+*/
+//valido=valido && validarEmail();// asi ejecuto solo hasta que una sea false.
+//valido=validarEmail()&&valido;//asi se ejecutan todas las funciones ...
 //el event lo rellena con el evento que venga
+
+
 function validar(event) {
-    setCookie(intentos) = getCookie("intentos") + 1
-    valido = true;
-    valido = valido && validarNombreYapellidos();
-    //valido=valido && validarEmail();// asi ejecuto solo hasta que una sea false.
-    //valido=validarEmail()&&valido;//asi se ejecutan todas las funciones ...
+    let intentos = parseInt(getCookie("intento")) + 1;
+    setCookie(intentos);
+    document.getElementById("intentos").innerHTML = "Llevas " + intentos + " intentos;";
+    let valido = true;
+    valido = valido && validarNombreApellidos();
+    valido = valido && validarEdad();
+    valido = valido && validarNif();
+    valido = valido && validarEmail();
+    valido = valido && validarProvincia();
+    valido = valido && validarFecha();
+    valido = valido && validarTelefono();
+    valido = valido && validarHora();
 
     if (!valido) {
-
-        console.log("false");
-        //console.log("event");
         event.preventDefault();
     }
 }
@@ -80,25 +172,21 @@ function validar(event) {
 
 
 
-function iniciareventos() {
-    let intentos = 0;
-    let errores = 0;
+function iniciarEventos() {
+    document.cookie = "intento=; max-age=0";
+
     let formulario = document.getElementById("formulario");
-    //console.log(botonEnviar);
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("apellidos");
-    document.getElementById("intentos").innerHTML = setCookie("intentos");
-
+    nombre.
     nombre.addEventListener("blur", pasarMayus);
     apellidos.addEventListener("blur", pasarMayus);
-
-
     formulario.addEventListener("submit", validar);
-
-
-
 }
-document.addEventListener("DOMContentLoaded", iniciareventos)
+
+
+
+document.addEventListener("DOMContentLoaded", iniciarEventos);
 
 
 

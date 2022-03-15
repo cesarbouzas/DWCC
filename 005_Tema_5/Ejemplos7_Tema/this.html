@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form nombre="formulario" id="formulario">
+        <fieldset>
+            <legend>Formulario con fielset</legend>
+            <label>Nombre:</label><input type="text" id="nombre" name="nombre" value="" onmouseover="identificarCampo(this)"><br><br>
+            <label>Apellidos:</label><input type="text" id="apellidos" name="apellidos" value="" onmouseover="identificarCampo(this)"><br><br>
+            <labael>Edad:</labael><input type="number" id="edad" name="edad" maxlength="3" value=0 onmouseover="identificarCampo(this)"><br><br>
+            <label>PAIS:</label><br><br>
+            <label>España</label><input type="radio" name="pais" id="españa" value="españa" onclick="identificarCampo(this)"><br>
+            <label>Francia</label><input type="radio" name="pais" id="francia" value="francia" onclick="identificarCampo(this)"><br><br>
+            <input type="submit" value="Enviar">
+
+
+
+
+        </fieldset>
+        <p id="datos"></p>
+
+
+    </form>
+
+
+
+
+    <script type="text/javascript ">
+        function identificarCampo(objeto) {
+            let nombre = objeto.name;
+            let id = objeto.id;
+            let valor = objeto.valor;
+            let tipo = objeto.type;
+
+            document.getElementById("datos").innerHTML = (`El objeto ${objeto} tiene nombre ${nombre} con id=${id}} , un valor de ${valor} y es de tipo tipo${tipo}`);
+        }
+    </script>
+</body>
+
+</html>

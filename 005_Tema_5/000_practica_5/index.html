@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <htm xmlns="http://www.w3.org/1999/xhtml">
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>DWEC05 - Solución Tarea</title>
         <script type="text/javascript" src="tarea5.js"></script>
         <style type="text/css">
-            label{
+            label {
                 width: 150px;
-                float:left;
-                margin-bottom:5px;     
+                float: left;
+                margin-bottom: 5px;
             }
-            input,select {
-                width:150px;
-                float:left;
-                margin-bottom:5px;
+            
+            input,
+            select {
+                width: 150px;
+                float: left;
+                margin-bottom: 5px;
             }
-            fieldset{
-                background:#66CCCC;
-                width:350px;
+            
+            fieldset {
+                background: #66CCCC;
+                width: 350px;
                 border: thick solid #306;
             }
-            legend{
+            
+            legend {
                 border-top-width: medium;
                 border-right-width: medium;
                 border-bottom-width: medium;
@@ -29,28 +34,33 @@
                 border-right-style: solid;
                 border-bottom-style: solid;
                 border-left-style: solid;
-                background-color: #FFF;     
+                background-color: #FFF;
             }
-            #mensajes{
+            
+            #mensajes {
                 float: left;
-                background:#33FF33;
+                background: #33FF33;
                 width: 325px;
             }
-            #errores{
+            
+            #errores {
                 float: left;
-                background:#FF6633;
+                background: #FF6633;
                 width: 325px;
             }
-            #intentos{
+            
+            #intentos {
                 float: left;
-                background:#CCFF33;
+                background: #CCFF33;
                 width: 325px;
             }
-            .error{
+            
+            .error {
                 border: solid 2px #FF0000;
             }
         </style>
     </head>
+
     <body>
         <fieldset>
             <legend>DWEC05 - Solución Tarea</legend>
@@ -71,19 +81,20 @@
                     <option value="C">A Coruña</option>
                     <option value="LU">Lugo</option>
                     <option value="OU">Ourense</option>
-                    <option value="OU">Pontevedra</option>
+                    <option value="P">Pontevedra</option>
                 </select>
                 <label for="fecha">Fecha Nacimiento:</label>
                 <input name="fecha" type="text" id="fecha" />
                 <label for="telefono">Teléfono:</label>
-                <input name="telefono" type="text" id="telefono" maxlength="9"/>
+                <input name="telefono" type="text" id="telefono" maxlength="9" />
                 <label for="hora">Hora de visita:</label>
                 <input name="hora" type="text" id="hora" />
                 <input type="reset" name="limpiar" id="button" value="Limpiar" />
                 <input type="submit" name="enviar" id="enviar" value="Enviar" />
-            </form> 
+            </form>
             <div id="errores"></div>
             <div id="intentos"></div>
         </fieldset>
     </body>
-</html>
+
+    </html>
