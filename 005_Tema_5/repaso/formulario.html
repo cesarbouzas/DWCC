@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <title>Document</title>
+    <script type="text/javascript">
+        let nombre = document.getElementById('nombre').value
+        console.log(nombre);
+        let apellidos = document.getElementById('apellidos').value;
+
+
+        let boton = document.getElementById('boton');
+        boton.addEventListener('click', mostrar);
+
+
+
+
+        function mostrar() {
+
+            console.log(`El nombre es ${nombre} y los apellidos son ${apellidos}`);
+        }
+    </script>
+</head>
+
+<body>
+    <form id="formulario" action="" method="post" name="formulario">
+        <label>Nombre:</label><input type="text" id="nombre" name="nombre">
+        <br>
+        <label>Apellidos</label><input type="text" id="apellidos" name="apellidos">
+        <br>
+        <label>Nacionalidad:</label>
+
+        <select>
+                <option value="es">España</option>
+                <option value="rus">Rusa</option>
+                <option value="ucr">Ucraniana</option>
+                <option value="catalana">Catalana</option>
+        </select>
+
+        <button id="boton" name="boton" value="boton">enviar</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo input</title>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+
+            <form name="formulario" method="get" action="">
+                <label>Nombre  :</label> <input type="text" name="texto" id="texto" /><br><br>
+                <label>Password:</label> <input type="password" name="contrasena" id="contrasena" /><br><br>
+                <label>Introduce comentarios:</label><br>
+                <textarea name="areaTexto" rows="10" cols="40" id="areaTexto" onblur="poner_text_Area_Mayusculas()"></textarea><br><br>
+                <input type="hidden" name="secreto" id="secreto" value="secreto" />
+                <input type="submit" value="enviar">
+
+            </form>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        let input_Text = document.getElementById("texto");
+        let input_password = document.getElementById("contrasena");
+        let input_TextArea = document.getElementById("areaTexto");
+        let input_hidden = document.getElementById("secreto");
+
+        input_Text.addEventListener("blur", ponerMayusculas);
+
+
+
+
+
+
+
+        /*********************Zona Funciones ****************/
+
+        //Opcion persoanlizada para cada 
+        function poner_text_Area_Mayusculas() {
+
+            let texto = input_TextArea.value;
+            texto = texto.toUpperCase();
+
+            let arrayTexto = texto.split(",");
+            console.log(arrayTexto)
+            let t = "";
+            for (let i = 0; i < arrayTexto.length; i++) {
+                t = t + arrayTexto[i].trim() + "\n";
+                console.log(t);
+            }
+            input_TextArea.value = t;
+
+        }
+
+        function ponerMayusculas(event) {
+            let elemento = event.target;
+            elemento.value = elemento.value.toUpperCase();
+        };
+    </script>
+</body>
+
+</html>

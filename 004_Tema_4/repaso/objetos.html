@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos en Javascript</title>
+</head>
+
+<body>
+
+    <p id="r1"></p>
+    <p id="r2"></p>
+    <p id="r3"></p>
+    <script type="text/javascript">
+        // un objeto en javvascript es realmente una collecion de propiedades
+        //las propiedades pueden tner forma de datos , tipos , fuciones o metodos o incluso otros objetos
+        //En javascript es mas facil entender un objeto como uun array de valores
+        // cada uno de estos valores esta asociado a una propiedas 
+        //La funcion contendia en un objeto se conoce como metdo.
+
+
+
+        class Contacto {
+            nombre
+            correo
+            static contador = 0;
+
+            //El constructor es utilizado cunado usamos el operador new.
+            // si no es definido es definido por defecto , pero lo ideal es que nosotros
+            //lo definamos
+            constructor(nombre, correo) {
+                    this.nombre = nombre;
+                    this.correo = correo;
+                    self.contador++;
+                }
+                //métodos
+
+            saludar() {
+                return `Hola me llamo ${this.nombre} y mi correo es ${this.correo}`;
+            }
+
+
+        }
+        let raul = new Contacto("raul", "construciones@pepe.com");
+        let pepe = new Contacto("Pepe", "construciones@pepe.com");
+        let cesar = new Contacto("cesar", "cesar@azimutvans.com");
+
+        console.log(pepe);
+        console.log(cesar);
+        //para hacer a las propiedades usamos el nombre de la clase y un punto
+        document.getElementById("r1").innerHTML = pepe.nombre;
+
+        document.getElementById("r2").innerHTML = pepe.correo;
+        document.getElementById("r3").innerHTML = pepe.saludar();
+
+        console.log(Contacto.contador);
+
+        //Los metdoso comunes a toda la clase son los m´todos estaticos
+        //palabra static delante.
+
+
+        class ContactoPreferido extends Contacto {
+            telefono;
+
+            constructor(nombre, correo, telefono) {
+                super(nombre, correo);
+                this.telefono = telefono;
+            }
+
+            saludar() {
+                return `hola mi nombre es ${this.nombre} y mi correo ${this.corroe} pero ahora tengo telefno ${this.telefono}`
+
+            }
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
