@@ -1,27 +1,62 @@
-document.addEventListener("DOMContentLoaded", ready)
+document.addEventListener("DOMContentLoaded", ready);
+let ncol = 0;
+let nfil = 0;
 PINTANDO = false;
 COLOR = null;
 
+
+
+
 function ready() {
-    generarTablaDibujo()
-    generarCambioColor()
-    generarEstadodePincel()
+    escucharInputs();
+    generarTablaDibujo(col, fil);
+    generarCambioColor();
+    generarEstadodePincel();
 }
 
-function generarTablaDibujo() {
+function escucharInputs() {
+    let col = document.getElementById("col");
+    let fil = document.getElementById("fil");
+    col.addEventListener("change", asignarCol);
+    fil.addEventListener("change", asignarFil);
+}
+
+function asignarCol() {
+    ncol = +col.value;
+
+    if (nfil == 0) {
+        generarTablaDibujo(ncol, 1);
+    } else {
+        generarTablaDibujo(ncol, nfil);
+    }
+};
+
+function asignarFil() {
+    nfil = +fil.value;
+    if (ncol == 0) {
+        generarTablaDibujo(1, nfil);
+    } else {
+        generarTablaDibujo(ncol, nfil);
+    }
+
+};
+
+function generarTablaDibujo(col, fil) {
+
+    borrarTablas();
     let zonaDibujo = document.getElementById("zonadibujo")
     let table = document.createElement("table")
     table.classList.add("tablerodibujo")
     zonaDibujo.appendChild(table)
-    for (let i = 0; i < 30; i++) {
-        //crear td
+    for (let i = 0; i < fil; i++) {
+        //crear tr
         let fila = document.createElement("tr")
         table.appendChild(fila)
-        for (let j = 0; j < 30; j++) {
+        for (let j = 0; j < col; j++) {
             let col = document.createElement("td")
             col.classList.add("tablerodibujo")
             fila.appendChild(col)
-            col.id = `celda=${(i*30)+j+1}`
+            col.id = `celda=${(i*fil)+j+1}`
             col.addEventListener("mouseover", pintar);
 
         }
@@ -60,7 +95,7 @@ function generarEstadodePincel() {
 function cambioEstadoPincel(ev) {
     PINTANDO = PINTANDO ? false : true;
     document.getElementById("pincel").innerHTML = PINTANDO ? "Pincel activo" : "Pincel desactivado";
-    if (ev.target.tagName == "TD") {
+    if (ev.target.tagName == "td") {
         pintar(ev)
     }
 }
@@ -81,17 +116,14 @@ function removeClassByPrefix(el, prefix) {
     return el;
 }
 
-//how to remove class by prefix
+function borrarTablas() {
+    let ntablas = document.getElementById("zonadibujo").getElementsByTagName("table");
+    console.log(ntablas.length);
+    if (ntablas.length > 0) {
+        for (let i = 0; i < ntablas.length; i++) {
+            ntablas[i].remove();
+        }
 
+    }
 
-
-
-
-
-//Mirar el estado del color
-//click 
-//cambiar el estado (si esta pintando parar borrar todo los mouse hover)
-// si no es pintando crear todos los eventos mouse hover(1)
-//El mouse over pintar(
-//mirar la clase seleccionado y aplicar la clase color
-//)
+}
