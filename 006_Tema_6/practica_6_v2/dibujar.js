@@ -95,7 +95,7 @@ function generarEstadodePincel() {
 function cambioEstadoPincel(ev) {
     PINTANDO = PINTANDO ? false : true;
     document.getElementById("pincel").innerHTML = PINTANDO ? "Pincel activo" : "Pincel desactivado";
-    if (ev.target.tagName == "td") {
+    if (ev.target.tagName == "TD") {
         pintar(ev)
     }
 }
