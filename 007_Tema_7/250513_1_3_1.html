@@ -10,7 +10,7 @@
         let peticion;
         const iniciar = () => {
             peticion = new XMLHttpRequest();
-            peticion.open('GET', "https://dawcbs.000webhostapp.com/fecha,php");
+            peticion.open('GET', "http://127.0.0.1:5500/007_Tema_7/220513_fecha.php");
             peticion.send();
             peticion.addEventListener("load", cargada);
             document.getElementById("estado").classList = ['cargando'];
@@ -32,7 +32,7 @@
             background: yellow;
         }
         
-        .cargando: {
+        .cargando {
             background: red;
         }
         
