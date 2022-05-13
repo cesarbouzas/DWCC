@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        let peticion;
+        const iniciar = () => {
+            peticion = new XMLHttpRequest();
+            peticion.open('GET', "https://dawcbs.000webhostapp.com/fecha,php");
+            peticion.send();
+            peticion.addEventListener("load", cargada);
+            document.getElementById("estado").classList = ['cargando'];
+            document.getElementById('estado').innerText = "cargando...";
+
+
+        }
+        const cargada = () => {
+            document.getElementById("resultados").innerText = peticion.responseText;
+            document.getElementById("estado").classList = ['cargada'];
+            document.getElementById("estado").innerText = "cargada."
+
+
+        }
+        window.addEventListener("load", iniciar, false);
+    </script>
+    <style>
+        #resultado {
+            background: yellow;
+        }
+        
+        .cargando: {
+            background: red;
+        }
+        
+        .cagada {
+            background: green;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <p> A continuacion se cargaran por Ajax los datos recibidos en la solictud de ASINCRONA:
+
+    </p>
+    <p>
+        Esta solicitud tardará 2 segundos aproximadamente , que es el tiempo de ejecucion del php en el servido
+    </p>
+    <p>Contenedor de resultados
+        <div id="resultados">
+
+        </div>
+    </p>
+    <p>Estado de las solicitudes
+        <div id="estado">
+
+        </div>
+    </p>
+</body>
+
+</html>
