@@ -3,46 +3,25 @@ class Clase {
     constructor(piso, numero) {
         this.piso = piso;
         this.numero = numero;
-        this.alumnos = [];
+        this.alumnos = new Array();
     }
 
     anadirAlumno(alumno) {
-        console.log("añadir alumnos");
         this.alumnos.push(alumno);
 
     }
-
-    anadirAlumnos(alum) {
-        console.log("añadir alumnos");
-        alum.foreach((item, index, Obj) => {
-            this.alumnos.push(item);
-        });
-
-
-
-    }
-
     mostrarAlumnos() {
-        console.log("estoy en mostar alumno");
-        for (let i = 0; i < aula.alumnos.length(); i++) {
+        for (let i = 0; i < this.alumnos.length; i++) {
             let td = document.createElement("td");
-            console.log(aula.alumnos[i].imprimirDatos());
-            td.innerHTML = aula.alumnos[i].imprimirDatos();
+            console.log(this.alumnos[i].imprimirDatos());
+            td.innerTEXT = this.alumnos[i].imprimirDatos();
             let tr = document.getElementById("pupitres");
             tr.appendChild(td);
         }
-        //this.alumnos.forEach((valor, key, arr) => {
-        //  let td = document.createElement("td");
-        //td.innerHTML = valor;
-        //document.getElementById("pupitres").appendChild(td);
+
     }
 
 }
-
-
-
-
-
 
 class alumno {
     constructor(nom, ape, dni) {
@@ -56,13 +35,18 @@ class alumno {
     }
 }
 
-let a1 = new alumno("cesar", "bouzas", 34896415);
-let a2 = new alumno("cesar", "bouzas", 34896415);
-let a3 = new alumno("cesar", "bouzas", 34896415);
-let aula = new Clase();
+
+let a1 = new alumno("César", "bouzas", 34896415);
+let a2 = new alumno("Manuel", "bouzas", 34896415);
+let a3 = new alumno("Mateo", "bouzas", 34896415);
+let aula = new Clase(1, 1);
 aula.anadirAlumno(a1);
 aula.anadirAlumno(a2);
 aula.anadirAlumno(a3);
 
-let btn = document.getElementById("btn");
-btn.addEventListener("click", aula.mostrarAlumnos);
+document.addEventListener("DOMContentLoaded", ready);
+
+function ready() {
+    let btn = document.getElementById("pintar");
+    btn.addEventListener("click", aula.mostrarAlumnos);
+}
