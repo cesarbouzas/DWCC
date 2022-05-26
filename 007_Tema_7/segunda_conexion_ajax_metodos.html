@@ -14,18 +14,25 @@
 
         function iniciar() {
             peticion = new XMLHttpRequest();
+            peticion.onreadysatatechange = function() {
+                console.log("cambio de estado");
+            }
             peticion.open('GET', 'https://dawcbs.000webhostapp.com/fecha.php');
+            //peticion.setRequestHeader("propietario", "cesar bouzas"); error de protocolo
             peticion.send();
             peticion.addEventListener("load", cargada);
             let estado = document.getElementById("estado");
             estado.classList = ["cargando"];
             estado.innerText = "cargando....";
 
+
         }
 
         function cargada() {
+
             let resultados = document.getElementById("resultados");
-            resultados.innerText = "peticion.respomseText=" + peticion.responseText;
+            resultados.innerText = " peticion.reponseText= " + peticion.responseText + " peticion.getAllResponseHeader() = " + peticion.getAllResponseHeaders() +
+                " peticion.resposeXML = " + peticion.responseXML + " peticion.status= " + peticion.status + " peticion.statusText = " + peticion.statusText;
             estado.classList = ["cargada"];
             estado.innerText = "Cargada.";
 
