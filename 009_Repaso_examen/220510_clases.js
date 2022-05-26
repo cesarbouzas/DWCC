@@ -3,7 +3,7 @@ class Clase {
     constructor(piso, numero) {
         this.piso = piso;
         this.numero = numero;
-        this.alumnos = [];
+        this.alumnos = new Array();
     }
 
     anadirAlumno(alumno) {
