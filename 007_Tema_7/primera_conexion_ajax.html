@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo peticion Ajax</title>
+
+
+
+    <script type="text/javascript">
+        let peticion;
+
+        function iniciar() {
+            peticion = new XMLHttpRequest();
+            peticion.open('GET', 'https://dawcbs.000webhostapp.com/fecha.php');
+            peticion.send();
+            peticion.addEventListener("load", cargada);
+            let estado = document.getElementById("estado");
+            estado.classList = ["cargando"];
+            estado.innerText = "cargando....";
+
+        }
+
+        function cargada() {
+            let resultados = document.getElementById("resultados");
+            resultados.innerText = "peticion.respomseText=" + peticion.responseText;
+            estado.classList = ["cargada"];
+            estado.innerText = "Cargada.";
+
+
+        }
+        window.addEventListener("load", iniciar, false);
+    </script>
+    <style>
+        #resultados {
+            background: yellow;
+        }
+        
+        .cargando {
+            background: red;
+        }
+        
+        .cargada {
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>
+        A continuacion cargaras por Ajax los datos recibidos en la solicitud ASINCRONA
+    </p>
+    <p>
+        Esta solicitud tardará 2 segundos aproximadamente , que es el tiempo de Ejecución
+    </p>
+    <p>
+        Contendor de resultados
+        <div id="resultados"></div>
+    </p>
+    <p>
+        Estado de las solicitudes;
+        <div id="estado"></div>
+    </p>
+
+</body>
+</html
