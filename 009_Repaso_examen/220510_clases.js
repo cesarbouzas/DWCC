@@ -10,16 +10,9 @@ class Clase {
         this.alumnos.push(alumno);
 
     }
-    mostrarAlumnos() {
-        for (let i = 0; i < this.alumnos.length; i++) {
-            let td = document.createElement("td");
-            console.log(this.alumnos[i].imprimirDatos());
-            td.innerTEXT = this.alumnos[i].imprimirDatos();
-            let tr = document.getElementById("pupitres");
-            tr.appendChild(td);
-        }
 
-    }
+
+
 
 }
 
@@ -44,9 +37,19 @@ aula.anadirAlumno(a1);
 aula.anadirAlumno(a2);
 aula.anadirAlumno(a3);
 
+function mostrarAlumnos() {
+    for (let i = 0; i < aula.alumnos.length; i++) {
+        let td = document.createElement("td");
+        console.log(aula.alumnos[i].imprimirDatos());
+        td.innerTEXT = aula.alumnos[i].imprimirDatos();
+        let tr = document.getElementById("pupitres");
+        tr.appendChild(td);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
     let btn = document.getElementById("pintar");
-    btn.addEventListener("click", aula.mostrarAlumnos);
+    btn.addEventListener("click", mostrarAlumnos);
 }
