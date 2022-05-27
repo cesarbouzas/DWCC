@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodos Jquery</title>
+    <script type="text/javascript" src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        //.$get(url,[datos],[callback],[tipo])
+        //.$getJSON(url[datos],callcback,[tipo])
+        $(() => {
+            $.getJSON("https://dawcbs.000webhostapp.com/datosjson.php", (respuesta) => {
+                console.log("Data" + respuesta);
+                console.log(respuesta);
+                for (let i = 0; i < respuesta.results.lenght; i++) {
+                    $("#tabla").append(
+                        "<tr> <td>" + (i + 1) + "</td> <td>" + respuesta.results[i].name + "</td></tr>"
+                    );
+                }
+            });
+
+        });
+    </script>
+    <style>
+        #resultados {
+            background: yellow;
+        }
+        
+        .cargada {
+            background: green;
+        }
+        
+        .cargando {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Se cargaran los datos</h1>
+    <p>
+        Contenedor de resultados
+        <table id="tabla"></table>
+    </p>
+</body>
+
+</html>

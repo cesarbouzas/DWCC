@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con Query</title>
+    <style type="text/css">
+        .colorido {
+            background-color: green;
+        }
+    </style>
+
+    <script type="text/javascript" src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $().ready(
+            function() {
+                $("#mitabla tr:nth-child(even)").addClass("colorido");
+            }
+        );
+    </script>
+</head>
+
+<body>
+    <table width="200" border="1" align="center" id="mitabla">
+        <tr>
+            <td align="center"><b>País</b></td>
+            <td align="center"><b>Habitantes</b></td>
+            <td align="center"><b>Renta</b></td>
+        </tr>
+        <tr>
+            <td>España</td>
+            <td>15600000</td>
+            <td>25000</td>
+        </tr>
+        <tr>
+            <td>Italia</td>
+            <td>45105500</td>
+            <td>45000</td>
+        </tr>
+        <tr>
+            <td>Francia</td>
+            <td>58454545</td>
+            <td>45645</td>
+        </tr>
+        <tr>
+            <td>Uk</td>
+            <td>78799788</td>
+            <td>88547</td>
+        </tr>
+        <tr>
+            <td>USA</td>
+            <td>98878787</td>
+            <td>45124</td>
+        </tr>
+
+
+
+    </table>
+</body>
+
+</html>

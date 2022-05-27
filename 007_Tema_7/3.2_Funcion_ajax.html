@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(() => {
+                $.ajax({
+                    url: 'https://dawcbs.000webhostapp.com/220513_fecha.php',
+                    type: 'GET',
+                    async: true,
+                    success: (resultado) => {
+
+                        $("#resultados").text('respuesta');
+                        $("#estado").toggleClass('cargada');
+                        $("#estado").text("cargada.");
+                    }
+                })
+            }
+
+        )
+    </script>
+    <style>
+        #resultados {
+            background: yellow;
+        }
+        
+        .cargada {
+            background: green;
+        }
+        
+        .cargando {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>
+        A continuacion se cargaran en Ajax los datos recibidos en la Solicitud Asincrona:
+    </p>
+    <p>
+        Esta solictud tardara 2 segundos aprox
+    </p>
+    <p>
+        Contenedor de resultados
+        <div id="resultados"></div>
+    </p>
+    <p>
+        Estado de las solicitudes
+    </p>
+    <div id="estado">
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodos Jquery</title>
+    <script type="text/javascript" src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        //.post(url,[datos],[callback],[tipo])
+        $(() => {
+            $.post('https://dawcbs.000webhostapp.com/procesar.php', 'nombre=cesar', (respuesta) => {
+
+                $("#resultados").html(respuesta);
+            });
+        });
+    </script>
+    <style>
+        #resultados {
+            background: yellow;
+        }
+        
+        .cargada {
+            background: green;
+        }
+        
+        .cargando {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Se cargaran los datos</h1>
+    <p>
+        Contenedor de resultados
+        <div id="resultados"></div>
+    </p>
+</body>
+
+</html>
