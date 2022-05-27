@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepcion Datos Json</title>
+    <script type="text/javascript">
+        let peticion;
+
+        function inicar() {
+
+            peticion = new XMLHttpRequest();
+            peticion.open("GET", "https://dawcbs.000webhostapp.com/datosjson.php");
+            peticion.send();
+            peticion.addEventListener("load", cargar);
+        }
+
+        function cargar() {
+            let texto = "";
+            let cds = JSON.parse(peticion.responseText);
+            for (let i = 0; i < cds.length; i++) {
+                texto += `<ul>`;
+                texto += `<b>Cd nº ${i+1}</b>`;
+                texto += `<li><b>Titulo ${cds[i].title}</b></li>`;
+                texto += `<li><b>Artista ${cds[i].artist}</b></li>`;
+                texto += `<li><b>Pais ${cds[i].country}</b></li>`;
+                texto += `<li><b>Compañia ${cds[i].company}</b></li>`;
+                texto += `<li><b>Precio ${cds[i].price}</b></li>`;
+                texto += `<li><b>Año ${cds[i].year}</b></li>`;
+                texto += `</ul>`;
+
+            }
+            texto += "</ul>";
+            document.getElementById("resultados").innerHTML = texto;
+        }
+        window.addEventListener("load", inicar);
+    </script>
+</head>
+
+<h1>Recepcion de Datos en formato Json https://dawcbs.000webhostapp.com/datosjson.php</h1>
+<div id="resultados"></div>
+
+<body>
+
+</body>
+
+</html>
