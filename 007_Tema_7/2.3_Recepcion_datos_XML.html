@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de recepcion de datos XML</title>
+    <script type="text/javascript">
+        let peticion;
+
+        function inicar() {
+            peticion = new XMLHttpRequest();
+            peticion.open("GET", "https://dawcbs.000webhostapp.com/datosxml.php");
+            peticion.send();
+            peticion.addEventListener("load", cargar);
+
+        }
+        let texto = "<ul>";
+
+        function cargar() {
+            let documentoXML = peticion.responseXML
+            let arrayCds = documentoXML.documentElement.getElementsByTagName("CD");
+
+            for (let i = 0; i < arrayCds.length; i++) {
+                texto += `<li><b>Cd nº${i+1}</b></li>`
+                texto += `<li><b>Titulo</b> :${arrayCds[i].getElementsByTagName("TITLE")[0].innerHTML}</li>`;
+
+
+            }
+            texto += "</ul>"
+            document.getElementById("resultados").innerHTML = texto;
+        }
+
+
+        window.addEventListener("load", inicar);
+    </script>
+
+
+
+
+</head>
+
+<body>
+
+    <h1>Lista de Cds descargados de https://dawcbs.000webhostapp.com/datosxml.php</h1>
+    <div id="resultados">
+
+    </div>
+
+
+
+
+</body>
+
+</html>
